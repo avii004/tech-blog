@@ -1,0 +1,39 @@
+<div class="form-settings col-12">
+  <div id="trim" class="">
+    <article class="col-8">
+      <h2>
+        Edit Post
+      </h2>
+      <form class="edit-post-form form-group">
+        <div class="form-group">
+          <input name="post-title" type="text" value="{{post.title}}" />
+          <span>({{format_url post.post_url}})</span>
+        </div>
+        <div>
+          {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
+          |
+          <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Save post</button>
+        <button type="button" class="delete-post-btn btn btn-primary">Delete post</button>
+      </form>
+    </article>
+
+    <form class="comment-form">
+      <div class="col-12">
+        <textarea class="form-control" name="comment-body"></textarea>
+      </div>
+
+      <div class="div-btn-spacing col-12">
+        <button class="btn btn-primary form-control" type="submit">add comment</button>
+      </div>
+    </form>
+    <div class="post-comments1 col-12">
+      {{> comments post.comments}}
+    </div>
+  </div>
+</div>
+
+<script src="/js/edit-post.js"></script>
+<script src="/js/delete-post.js"></script>
+<script src="/js/comment.js"></script>
